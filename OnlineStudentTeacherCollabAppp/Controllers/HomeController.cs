@@ -10,6 +10,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
     {
         public ActionResult Index()
         {
+            //
             return View();
         }
 
