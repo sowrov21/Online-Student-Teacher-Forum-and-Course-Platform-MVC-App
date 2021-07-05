@@ -12,7 +12,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
 {
     public class LoginController : Controller
     {
-        //string connString = @"Data Source=SOWROV-PC;Database=University;User ID=sa;Password=def111283;";
+ 
         TeacherStudentForumEntities context = new TeacherStudentForumEntities();
 
         // GET: Login
@@ -44,6 +44,11 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
                     {
                         //TempData["Message"] = "Success! matched as Student";
                         return RedirectToAction("Index", "StudentDashboard");
+                    }
+                    else if (user.Type == "Teacher")
+                    {
+                        //TempData["Message"] = "Success! matched as Student";
+                        return RedirectToAction("Index", "TeacherDashboard");
                     }
                     //TempData["Message"] = "Success! matched";
 
