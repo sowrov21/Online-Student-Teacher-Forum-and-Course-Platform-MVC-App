@@ -6,6 +6,11 @@
     <edmx:Diagrams>
       <Diagram DiagramId="80cc29dc3914436bb12e5f99f88ba1cb" Name="Diagram1">
         <EntityTypeShape EntityType="TeacherStudentForumModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeacherStudentForumModel.Category" Width="1.5" PointX="6.125" PointY="1.125" />
+        <EntityTypeShape EntityType="TeacherStudentForumModel.Post" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="TeacherStudentForumModel.sysdiagram" Width="1.5" PointX="0.5" PointY="3.625" />
+        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__Category___3A81B327" />
+        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__User_id__3B75D760" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -29,11 +29,13 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
                 if (context.Users.Any(obj => obj.Email.Equals(u.Email) && obj.Password.Equals(u.Password)))
                 {
                     //Session["username"] = u.Name.ToString();
+                    
                     FormsAuthentication.SetAuthCookie(u.Name, false);
 
-                    User user = context.Users.Where(x => x.Email == u.Email).ToList().FirstOrDefault();
-                   
-         
+                    var user = context.Users.Where(x => x.Email == u.Email).ToList().FirstOrDefault();
+                    
+                    Session["CurrentUserid"] = user.Id;
+
                     if (user.Type == "Admin")
                     {
                         //TempData["Message"] = "Success! matched as Admin";

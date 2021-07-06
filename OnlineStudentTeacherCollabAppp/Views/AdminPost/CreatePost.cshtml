@@ -1,0 +1,60 @@
+﻿@model OnlineStudentTeacherCollabAppp.Models.ViewModel.CategoryPostVM
+@{
+    ViewBag.Title = "CreatePost";
+}
+
+<h2>Create New Post </h2>
+
+
+
+
+<style>
+
+    .center_div {
+        margin: 0 auto;
+        width: 40% /* value of your choice which suits your alignment */
+    }
+</style>
+
+<div class=" container center_div">
+
+    <form action="/AdminPost/CreatePost" method="post">
+        <h2>Add New Post</h2>
+        <div class="form-group">
+            <label>Title</label>
+            <input type="text" class="form-control" name="Title" value="@Model.Post.Title" placeholder="Enter the post">
+
+        </div>
+
+                <div class="form-group">
+            <label>Category</label>
+
+
+          <select class="form-control" name="Category_id">
+                <option value="null" style="display: none" selected disabled>Choose Category</option>
+                @foreach (var ctg in Model.Categories)
+                {
+                    <option value="@ctg.Id">
+                        @ctg.Name
+                    </option>
+                }
+            </select>
+
+        </div>
+        <div class="form-group">
+            <label>Description</label>
+            <textarea class="form-control" name="Description" value="@Model.Post.Description" placeholder="Write your problem here"></textarea>
+
+        </div>
+
+        <input type="hidden" name="Status" value="Unpublished" />
+        <input type="hidden" name="User_id" value="@Session["CurrentUserid"]" />
+
+
+
+        <button type="submit" class="btn btn-primary">Add</button>
+
+    </form>
+
+</div>
+
