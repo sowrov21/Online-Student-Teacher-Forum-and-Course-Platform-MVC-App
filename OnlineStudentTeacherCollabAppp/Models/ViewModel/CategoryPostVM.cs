@@ -13,10 +13,13 @@ namespace OnlineStudentTeacherCollabAppp.Models.ViewModel
 
         public List<Post> PostsList { get; set; }
 
+        public List<User> UsersList { get; set; }
+
         public CategoryPostVM()
         {
             Categories = new List<Category>();
             PostsList = new List<Post>();
+            UsersList = new List<User>();
         }
     }
 }

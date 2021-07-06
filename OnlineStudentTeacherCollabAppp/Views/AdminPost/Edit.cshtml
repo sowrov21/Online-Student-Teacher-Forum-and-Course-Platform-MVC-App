@@ -5,6 +5,9 @@
 
 
 
+
+
+
 <style>
 
     .center_div {
@@ -15,8 +18,8 @@
 
 <div class=" container center_div">
 
-    <form action="/AdminPost/CreatePost" method="post">
-        <h2>Add New Post</h2>
+    <form action="" method="post">
+        <h2>Update Post</h2>
 
         <div class="form-group">
             <label>Title</label>
@@ -32,25 +35,40 @@
                 <option value="null" style="display: none" selected disabled>Choose Category</option>
                 @foreach (var ctg in Model.Categories)
                 {
-                    <option value="@ctg.Id">
+                    <option value="@ctg.Id" @(Model.Post.Category_id == ctg.Id ? "selected" : "")>
                         @ctg.Name
                     </option>
                 }
+
             </select>
             @Html.ValidationMessage("Category_id", htmlAttributes: new { @class = "text-danger" })
         </div>
         <div class="form-group">
             <label>Description</label>
-            <textarea class="form-control" name="Description" value="@Model.Post.Description" placeholder="Write your problem here"></textarea>
+            <textarea class="form-control" name="Description" placeholder="Write your problem here">@Model.Post.Description</textarea>
             @Html.ValidationMessage("Description", htmlAttributes: new { @class = "text-danger" })
         </div>
 
-        <input type="hidden" name="Status" value="Unpublished" />
+        <!--<select class="form-control" name="Status">
+        <option value="null" style="display: none" selected disabled>Choose Status</option>-->
+        @* @foreach (var ctg in Model.PostsList)
+        {
+            <option value="@ctg.Id" @(Model.Post.Status == ctg.Status ? "selected" : "")>
+                @ctg.Status
+            </option>
+        }
+
+        </select>*@
+
+        <input type="hidden" name="Status" value="@Model.Post.Status" />
+
+
         <input type="hidden" name="User_id" value="@Session["CurrentUserid"]" />
+        <br />
+        <br />
 
 
-
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Update</button>
 
     </form>
 

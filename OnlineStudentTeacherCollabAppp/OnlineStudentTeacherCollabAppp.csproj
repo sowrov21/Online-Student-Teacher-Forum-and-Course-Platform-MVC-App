@@ -133,6 +133,7 @@
     <Compile Include="Controllers\Admin\AdminPostController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\RegistrationController.cs" />
     <Compile Include="Controllers\Student\StudentDashboardController.cs" />
     <Compile Include="Controllers\Teacher\TeacherDashboardController.cs" />
     <Compile Include="Global.asax.cs">
@@ -228,6 +229,9 @@
     <Content Include="Views\Shared\_AdminDashboardLayout.cshtml" />
     <Content Include="Views\AdminPost\CreatePost.cshtml" />
     <Content Include="Views\AdminPost\PopulatePostTable.cshtml" />
+    <Content Include="Views\AdminPost\Details.cshtml" />
+    <Content Include="Views\AdminPost\Edit.cshtml" />
+    <Content Include="Views\Registration\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

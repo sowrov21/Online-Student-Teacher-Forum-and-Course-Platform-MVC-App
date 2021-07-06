@@ -11,14 +11,18 @@ namespace OnlineStudentTeacherCollabAppp.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Post
     {
         public int Id { get; set; }
+        [Required]
         public string Title { get; set; }
+        [Required]
         public string Description { get; set; }
         public Nullable<int> ViewCount { get; set; }
         public string Status { get; set; }
+        [Range(1, Double.PositiveInfinity, ErrorMessage = "You must choose category")]
         public int Category_id { get; set; }
         public Nullable<int> User_id { get; set; }
     

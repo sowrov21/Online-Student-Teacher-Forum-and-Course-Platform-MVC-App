@@ -6,6 +6,11 @@
     <title>@ViewBag.Title -Admin Dashboard</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("styles", required: false)
+
+
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -20,13 +25,30 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Create Post", "CreatePost", "AdminPost")</li>
+                    <li>@Html.ActionLink("Go to Website", "Index", "Home")</li>
 
                     <li>@Html.ActionLink("Dashboard", "Index", "AdminDashboard")</li>
-                    <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                    <!--dropdown Menu Start-->
+                    <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                            Post Management
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu active">
+                            <li>@Html.ActionLink("Create Post", "CreatePost", "AdminPost")</li>
+                            <li>@Html.ActionLink("All Post", "PopulatePostTable", "AdminPost")</li>
+                        </ul>
+                    </li>
+
+                    <!--dropdown Menu End-->
 
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li>@Html.ActionLink("Logout", "Logout", "Login")</li>
+                </ul>
+
+
+
             </div>
         </div>
     </div>
