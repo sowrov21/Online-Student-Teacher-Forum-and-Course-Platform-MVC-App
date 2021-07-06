@@ -12,7 +12,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
 {
     public class LoginController : Controller
     {
-        //string connString = @"Data Source=SOWROV-PC;Database=University;User ID=sa;Password=def111283;";
+ 
         TeacherStudentForumEntities context = new TeacherStudentForumEntities();
 
         // GET: Login
@@ -29,11 +29,13 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
                 if (context.Users.Any(obj => obj.Email.Equals(u.Email) && obj.Password.Equals(u.Password)))
                 {
                     //Session["username"] = u.Name.ToString();
+                    
                     FormsAuthentication.SetAuthCookie(u.Name, false);
 
-                    User user = context.Users.Where(x => x.Email == u.Email).ToList().FirstOrDefault();
-                   
-         
+                    var user = context.Users.Where(x => x.Email == u.Email).ToList().FirstOrDefault();
+                    
+                    Session["CurrentUserid"] = user.Id;
+
                     if (user.Type == "Admin")
                     {
                         //TempData["Message"] = "Success! matched as Admin";
@@ -44,6 +46,11 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
                     {
                         //TempData["Message"] = "Success! matched as Student";
                         return RedirectToAction("Index", "StudentDashboard");
+                    }
+                    else if (user.Type == "Teacher")
+                    {
+                        //TempData["Message"] = "Success! matched as Student";
+                        return RedirectToAction("Index", "TeacherDashboard");
                     }
                     //TempData["Message"] = "Success! matched";
 

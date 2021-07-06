@@ -26,5 +26,8 @@ namespace OnlineStudentTeacherCollabAppp.Models
         }
     
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }
