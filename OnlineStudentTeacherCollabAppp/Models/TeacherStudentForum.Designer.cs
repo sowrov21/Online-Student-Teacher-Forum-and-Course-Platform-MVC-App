@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\Mohammad Sowrov\source\repos\MyProject\OnlineStudentTeacherCollabAppp\OnlineStudentTeacherCollabAppp\Models\TeacherStudentForum.edmx'. 
+﻿// T4 code generation is enabled for model 'E:\ATP2(.Net)\MyProject1\Online-Student-Teacher-Forum-and-Course-Platform-MVC-App\OnlineStudentTeacherCollabAppp\Models\TeacherStudentForum.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

@@ -4,13 +4,12 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="80cc29dc3914436bb12e5f99f88ba1cb" Name="Diagram1">
-        <EntityTypeShape EntityType="TeacherStudentForumModel.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeacherStudentForumModel.Category" Width="1.5" PointX="6.125" PointY="1.125" />
-        <EntityTypeShape EntityType="TeacherStudentForumModel.Post" Width="1.5" PointX="3.375" PointY="0.75" />
-        <EntityTypeShape EntityType="TeacherStudentForumModel.sysdiagram" Width="1.5" PointX="0.5" PointY="3.625" />
-        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__Category___3A81B327" />
-        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__User_id__3B75D760" />
+      <Diagram DiagramId="789ce69ba1a74d0da461642d3d82e91a" Name="Diagram1">
+        <EntityTypeShape EntityType="TeacherStudentForumModel.Category" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeacherStudentForumModel.Post" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeacherStudentForumModel.User" Width="1.5" PointX="0.75" PointY="5.125" IsExpanded="true" />
+        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__Category___3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="TeacherStudentForumModel.FK__Posts__User_id__3B75D760" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
