@@ -8,7 +8,7 @@ using OnlineStudentTeacherCollabAppp.Models.ViewModel;
 
 namespace OnlineStudentTeacherCollabAppp.Controllers.Admin
 {
-
+   /* [Authorize]*/
     public class AdminPostController : Controller
 
     {
@@ -38,7 +38,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers.Admin
             {
                 context.Posts.Add(p);
                 context.SaveChanges();
-                return RedirectToAction("Index", "AdminDashboard");
+                return RedirectToAction("PopulatePostTable");
             }
             CategoryPostVM combodata = new CategoryPostVM();
 
@@ -50,12 +50,78 @@ namespace OnlineStudentTeacherCollabAppp.Controllers.Admin
 
         public ActionResult PopulatePostTable ()
         {
-            Post p = new Post();
             CategoryPostVM combodata = new CategoryPostVM();
-            combodata.Post = p;
+            combodata.PostsList = context.Posts.ToList();
             combodata.Categories = context.Categories.ToList();
+            combodata.UsersList = context.Users.ToList();
 
             return View(combodata);
         }
+
+        public ActionResult Edit(int id)
+        {
+            CategoryPostVM combodata = new CategoryPostVM();
+            var post = context.Posts.FirstOrDefault(x => x.Id == id);
+            combodata.Categories = context.Categories.ToList();
+            combodata.Post = post;
+            return View(combodata);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Post p)
+        {
+            if(ModelState.IsValid)
+            {
+                var old_post = context.Posts.FirstOrDefault(x => x.Id == p.Id);
+
+                context.Entry(old_post).CurrentValues.SetValues(p);
+                context.SaveChanges();
+                return RedirectToAction("PopulatePostTable");
+            }
+            CategoryPostVM combodata = new CategoryPostVM();
+
+            combodata.Categories = context.Categories.ToList();
+            combodata.Post = p;
+            return View(combodata);
+
+        }
+
+        public ActionResult Details(int id)
+        {
+            var post = context.Posts.FirstOrDefault(x => x.Id == id);
+            CategoryPostVM combodata = new CategoryPostVM();
+
+            combodata.Categories = context.Categories.ToList();
+            combodata.UsersList = context.Users.ToList();
+            combodata.Post = post;
+            return View(combodata);
+        }
+
+        public ActionResult Hide(int id)
+        {
+            var post = context.Posts.FirstOrDefault(x => x.Id == id);
+            post.Status = "Unpublished";
+            context.SaveChanges();
+            return RedirectToAction("PopulatePostTable");
+        }
+
+        public ActionResult Show(int id)
+        {
+            var post = context.Posts.FirstOrDefault(x => x.Id == id);
+            post.Status = "Published";
+            context.SaveChanges();
+            return RedirectToAction("PopulatePostTable");
+        }
+
+
+        public ActionResult Delete(int id)
+        {
+            var post = context.Posts.FirstOrDefault(x => x.Id == id);
+
+            context.Posts.Remove(post);
+            context.SaveChanges();
+            return RedirectToAction("PopulatePostTable");
+        }
+
     }
 }

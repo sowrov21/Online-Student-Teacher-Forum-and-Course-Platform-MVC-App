@@ -1,11 +1,11 @@
-﻿
+﻿@model OnlineStudentTeacherCollabAppp.Models.ViewModel.CategoryPostVM 
 @{
     ViewBag.Title = "PopulatePostTable";
 }
 
 @*table table-condensed table-hover table-striped active*@
 
-<h2>PopulateTable</h2>
+<h2>All Post </h2>
 
 <table id="example" class="table table-striped table-bordered table-hover" style="width:100% ">
     <thead>
@@ -14,43 +14,75 @@
             <td>Title</td>
             <td>Category</td>
             <td>Status</td>
-            <td>CGPA</td>
-            <td>Department</td>
+            <td>Author</td>
             <td>Action</td>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in @Model.StudentsList)
+        @foreach (var item in @Model.PostsList)
         {
-            <tr>
-                <td>@item.Id</td>
-                <td>@item.Name</td>
-                <td>@item.DOB</td>
-                <td>@item.Credit</td>
-                <td>@item.CGPA</td>
-                @* <td>@item.Dept_id</td>*@
-                <td>
-                    @foreach (var dept in @Model.Departments)
-                    {
-
-                        @(item.Dept_id == dept.Id ? @dept.Name : "")
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Title</td>
 
 
-                    }
+            <td>
+               
+                @foreach (var ctg in @Model.Categories)
+                {
+
+                    @(item.Category_id == ctg.Id ? @ctg.Name : "")
 
 
-                </td>
-                <td>
-                    <a class="btn btn-success" href="/Students/Edit/@item.Id" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></a> &nbsp;|
+                }
 
-                    <form method="post" id="delete-form-@item.Id" action="/Students/Delete/@item.Id" style="display: none;">
-                    </form>
-                    <a class="btn btn-danger" onclick="deleteFunc(@item.Id)" data-toggle="tooltip" data-placement="top" title="Delete"> <i class="fas fa-trash-alt"></i> </a>&nbsp;|
+            </td>
 
-                    <a class="btn btn-primary" href="/Students/Details/@item.Id" data-toggle="tooltip" data-placement="top" title="Details"><i class="fas fa-eye"></i></a>
+            <td>
 
-                </td>
-            </tr>
+
+                @if (item.Status == "Unpublished")
+                {
+                    <span class="badge " style="background-color: #d43f3a;">Pending</span>
+                }
+                else
+                {
+                    <a href="#" class="badge" style="background-color: #398439;">Approved</a>
+                }
+
+                
+            </td>
+
+            <td>
+                @foreach (var u in @Model.UsersList)
+                {
+
+                    @(item.User_id == u.Id ? @u.Name : "")
+
+
+                }
+            </td>
+
+            <td>
+                <a class="btn btn-success" href="/AdminPost/Edit/@item.Id" data-toggle="tooltip" data-placement="top" title="Edit"><i class="far fa-edit"></i></a> &nbsp;|
+
+                <form method="post" id="delete-form-@item.Id" action="/AdminPost/Delete/@item.Id" style="display: none;">
+                </form>
+                <a class="btn btn-danger" onclick="deleteFunc(@item.Id)" data-toggle="tooltip" data-placement="top" title="Delete"> <i class="fas fa-trash-alt"></i> </a>&nbsp;|
+
+                <a class="btn btn-primary" href="/AdminPost/Details/@item.Id" data-toggle="tooltip" data-placement="top" title="Details"><i class="fas fa-eye"></i></a>&nbsp;|
+
+                @if (item.Status == "Unpublished")
+                {
+                    <a class="btn btn-success" href="/AdminPost/Show/@item.Id" data-toggle="tooltip" data-placement="top" title="Click to Publish"><i class="fas fa-arrow-circle-down"></i></a>
+                }
+                else
+                {
+                    <a class="btn btn-danger" href="/AdminPost/Hide/@item.Id" data-toggle="tooltip" data-placement="top" title="Click to Unpublish"><i class="fas fa-arrow-circle-up"></i></a>
+                }
+
+            </td>
+        </tr>
         }
 
     </tbody>
@@ -89,7 +121,7 @@
     </script>
 
 
-   @* <script type="text/javascript">
+    <script type="text/javascript">
 
         function deleteFunc(id) {
             event.preventDefault();
@@ -130,7 +162,7 @@
         }
 
 
-    </script>*@
+    </script>
 
 }
 

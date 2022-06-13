@@ -35,6 +35,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers
                     var user = context.Users.Where(x => x.Email == u.Email).ToList().FirstOrDefault();
                     
                     Session["CurrentUserid"] = user.Id;
+                    Session["CurrentUserName"] = user.Name;
 
                     if (user.Type == "Admin")
                     {
