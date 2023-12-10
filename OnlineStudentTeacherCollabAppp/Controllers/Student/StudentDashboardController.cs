@@ -11,6 +11,7 @@ namespace OnlineStudentTeacherCollabAppp.Controllers.Student
         // GET: StudentDashboard
         public ActionResult Index()
         {
+            //student 
             return View();
         }
     }
